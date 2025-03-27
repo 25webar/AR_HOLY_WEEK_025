@@ -1,0 +1,298 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="importmap">
+    {
+      "imports": {
+        "three"             : "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/"     : "https://unpkg.com/three@0.160.0/examples/jsm/",
+        "mindar-image-three": "https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-three.prod.js"
+      }
+    }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/dat.gui"></script>
+
+    <script type="module">
+      import * as THREE from 'three';
+      import { MindARThree } from 'mindar-image-three';
+      import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+      //target image whip,rock
+      const mindarThree = new MindARThree({
+        container: document.querySelector("#container"),
+        imageTargetSrc: "./assets/rock.mind"
+        
+      });
+      const mindarThree1 = new MindARThree({
+        container: document.querySelector("#container"),
+        imageTargetSrc: "./assets/sponge.mind"
+      });
+      const mindarThree2 = new MindARThree({
+        container: document.querySelector("#container"),
+        imageTargetSrc: "./assets/WhipTarget.mind"
+      });
+      const mindarThree3 = new MindARThree({
+        container: document.querySelector("#container"),
+        imageTargetSrc: "./assets/NailsTarget.mind"
+      });
+      const mindarThree4 = new MindARThree({
+        container: document.querySelector("#container"),
+        imageTargetSrc: "./assets/SpearTarget.mind"
+      });
+      const mindarThree5 = new MindARThree({
+        container: document.querySelector("#container"),
+        imageTargetSrc: "./assets/CrownTarget.mind"
+      });
+      const mindarThree6 = new MindARThree({
+        container: document.querySelector("#container"),
+        imageTargetSrc: "./assets/HolySHTarget.mind"
+      });
+      const { renderer, scene, camera } = mindarThree;
+      const { scene:scene1,renderer:renderer1,camera:camera1} = mindarThree1;
+      const { scene:scene2,renderer:renderer2,camera:camera2} = mindarThree2;
+      const { scene:scene3,renderer:renderer3,camera:camera3} = mindarThree3;
+      const { scene:scene4,renderer:renderer4,camera:camera4} = mindarThree4;
+      const { scene:scene5,renderer:renderer5,camera:camera5} = mindarThree5;
+      const { scene:scene6,renderer:renderer6,camera:camera6} = mindarThree6;
+      
+      const anchor  = mindarThree.addAnchor(0);
+      const anchor1 = mindarThree1.addAnchor(0);
+      const anchor2 = mindarThree2.addAnchor(0);
+      const anchor3 = mindarThree3.addAnchor(0);
+      const anchor4 = mindarThree4.addAnchor(0);
+      const anchor5 = mindarThree5.addAnchor(0);
+      const anchor6 = mindarThree6.addAnchor(0);
+      
+      //Add Lights
+      const Light_1 = new THREE.DirectionalLight(0xffffff,10);
+      Light_1.position.set(0,0,1000);
+      const Light_2 = new THREE.DirectionalLight(0xffffff,10);
+      Light_2.position.set(-1000,-1000,-1000);
+      scene.add(Light_1),scene.add(Light_2)
+
+      
+      //const Light_4 = new THREE.DirectionalLight(0xffffff,5);
+      //Light_4.position.set(1000,1000,1000);
+      //Light_4.rotation.set(90,90,90);
+      //scene1.add(Light_3),scene1.add(Light_4);
+/*
+      const gui = new dat.GUI();
+      const lightFolder = gui.addFolder("Light 3 Position");
+      lightFolder.add(Light_3.position, "x", -2000, 2000);
+      lightFolder.add(Light_3.position, "y", -2000, 2000);
+      lightFolder.add(Light_3.position, "z", -2000, 2000);
+      lightFolder.open();
+  //const gridHelper = new THREE.GridHelper(500, 50);
+//scene1.add(gridHelper);
+*/
+      // إنشاء الإضاءة
+      const Light_3 = new THREE.DirectionalLight(0xffffff, 10);
+      Light_3.position.set(0, 0, 0);
+      scene1.add(Light_3);
+    
+
+      // إضافة dat.GUI
+      const gui = new dat.GUI();
+      // إنشاء فولدر جديد في القائمة
+      const lightFolder = gui.addFolder("Light 3 Position");
+      // تحكم في المحاور X, Y, Z
+      lightFolder.add(Light_3.position, "x", -10000, 10000).name("X Position");
+      lightFolder.add(Light_3.position, "y", -10000, 10000).name("Y Position");
+      lightFolder.add(Light_3.position, "z", -10000, 10000).name("Z Position");
+      // فتح القائمة تلقائيًا
+      lightFolder.open();
+      // تحديث الاتجاه عن طريق Target
+      
+
+      
+
+      const Light_5 = new THREE.DirectionalLight(0xffffff,8);
+      Light_5.position.set(-1000,-1000,-1000);
+      const Light_6 = new THREE.DirectionalLight(0xffffff,5);
+      Light_6.position.set(1000,1000,1000);
+      scene2.add(Light_5),scene2.add(Light_6)
+
+      const Light_7 = new THREE.DirectionalLight(0xffffff,8);
+      Light_7.position.set(-1000,-1000,-1000);
+      const Light_8 = new THREE.DirectionalLight(0xffffff,5);
+      Light_8.position.set(1000,1000,1000);
+      scene3.add(Light_7),scene3.add(Light_8)
+
+      const Light_9 = new THREE.DirectionalLight(0xffffff,8);
+      Light_9.position.set(-1000,-1000,-1000);
+      const Light_10 = new THREE.DirectionalLight(0xffffff,5);
+      Light_10.position.set(1000,1000,1000);
+      scene4.add(Light_9),scene4.add(Light_10)
+
+      const Light_11 = new THREE.DirectionalLight(0xffffff,8);
+      Light_11.position.set(-1000,-1000,-1000);
+      const Light_12 = new THREE.DirectionalLight(0xffffff,5);
+      Light_12.position.set(1000,1000,1000);
+      scene5.add(Light_11),scene5.add(Light_12)
+
+      const Light_13 = new THREE.DirectionalLight(0xffffff,8);
+      Light_13.position.set(-1000,-1000,-1000);
+      const Light_14 = new THREE.DirectionalLight(0xffffff,5);
+      Light_14.position.set(1000,1000,1000);
+      scene6.add(Light_13),scene6.add(Light_14)
+      
+      // Load 3D model
+      const loader = new GLTFLoader();
+      loader.load("./assets/Rock2.glb", (gltf) =>
+      {
+        const model = gltf.scene;
+        model.scale.set(35,35,35); // Scale the model
+        model.position.set(0, 0, 0);
+        model.rotation.set(1.5,0,0);
+        anchor.group.add(model);
+      }
+      , undefined, (error) => 
+      {
+        console.error("Error loading model:", error);
+      });
+      const loader1 = new GLTFLoader();
+      loader1.load("./assets/Sponge.glb", (gltf) =>
+      {
+        const model1 = gltf.scene;
+        model1.scale.set(30, 30, 30); // Scale the model
+        model1.position.set(0, -1, 0);
+        model1.rotation.set(1.5,0,0);
+        anchor1.group.add(model1);
+      }
+      , undefined, (error) => 
+      {
+        console.error("Error loading model:", error);
+      });
+      const loader2 = new GLTFLoader();
+      loader2.load("./assets/Whip.glb", (gltf) =>
+      {
+        const model2 = gltf.scene;
+        model2.scale.set(15, 15, 15); // Scale the model
+        model2.position.set(0, 0.3, -0.5);
+        model2.rotation.set(1.5,-1.5,0);
+        anchor2.group.add(model2);
+      }
+      , undefined, (error) => 
+      {
+        console.error("Error loading model:", error);
+      });
+      const loader3 = new GLTFLoader();
+      loader3.load("./assets/Nail.glb", (gltf) =>
+      {
+        const model3 = gltf.scene;
+        model3.scale.set(15, 15, 15); // Scale the model
+        model3.position.set(0.3, 0.3, 0);
+        model3.rotation.set(1.5,0,0);
+        anchor3.group.add(model3);
+      }
+      , undefined, (error) => 
+      {
+        console.error("Error loading model:", error);
+      });
+      const loader4 = new GLTFLoader();
+      loader4.load("./assets/Spear1.glb", (gltf) =>
+      {
+        const model4 = gltf.scene;
+        model4.scale.set(40, 40, 40); // Scale the model
+        model4.position.set(0, 2, 0);
+        model4.rotation.set(1.5,0,0);
+        anchor4.group.add(model4);
+      }
+      , undefined, (error) => 
+      {
+        console.error("Error loading model:", error);
+      });
+      const loader5 = new GLTFLoader();
+      loader5.load("./assets/shook.glb", (gltf) =>
+      {
+        const model5 = gltf.scene;
+        model5.scale.set(10, 10, 10); // Scale the model
+        model5.position.set(0.2, 0.2, 0);
+        model5.rotation.set(1.5,0,0);
+        anchor5.group.add(model5);
+      }
+      , undefined, (error) => 
+      {
+        console.error("Error loading model:", error);
+      });
+      const loader6 = new GLTFLoader();
+      loader6.load("./assets/Kafen.glb", (gltf) =>
+      {
+        const model6 = gltf.scene;
+        model6.scale.set(9, 9, 9); // Scale the model
+        model6.position.set(0, 0,2.2);
+        model6.rotation.set(1.5,0,0);
+        anchor6.group.add(model6);
+      }
+      , undefined, (error) => 
+      {
+        console.error("Error loading model:", error);
+      });
+         mindarThree.start();
+         mindarThree1.start();
+         mindarThree2.start();
+         mindarThree3.start();
+         mindarThree4.start();
+         mindarThree5.start();
+         mindarThree6.start();
+
+        renderer.setAnimationLoop(() => {
+        renderer.render(scene, camera);
+        })
+        renderer1.setAnimationLoop(() => {
+        renderer1.render(scene1, camera1);
+        });
+        renderer2.setAnimationLoop(() => {
+        renderer2.render(scene2, camera2);
+        });
+        renderer3.setAnimationLoop(() => {
+        renderer3.render(scene3, camera3);
+        });
+        renderer4.setAnimationLoop(() => {
+        renderer4.render(scene4, camera4);
+        });
+        renderer5.setAnimationLoop(() => {
+        renderer5.render(scene5, camera5);
+        });
+        renderer6.setAnimationLoop(() => {
+        renderer6.render(scene6, camera6);
+        });
+        document.querySelector("#startButton").addEventListener("click", start);
+        document.querySelector("#stopButton").addEventListener("click", () => {
+        mindarThree.stop();
+        mindarThree.renderer.setAnimationLoop(null);
+        mindarThree1.stop();
+        mindarThree1.renderer.setAnimationLoop(null);
+        mindarThree2.stop();
+        mindarThree2.renderer.setAnimationLoop(null);
+        mindarThree3.stop();
+        mindarThree3.renderer.setAnimationLoop(null);
+        mindarThree4.stop();
+        mindarThree4.renderer.setAnimationLoop(null);
+        mindarThree5.stop();
+        mindarThree5.renderer.setAnimationLoop(null);
+        mindarThree6.stop();
+        mindarThree6.renderer.setAnimationLoop(null);
+      });
+    </script>
+    <style>
+      .mindar-ui-scanning {
+  display: none !important;
+}
+      body {
+        margin: 0;
+      }
+      #container {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+      #control {
+        position: fixed;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+  </body>
+</html>
