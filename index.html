@@ -8,13 +8,13 @@
   <body>
     <a-scene mindar-image="imageTargetSrc: ./assets/targets.mind; maxTrack: 7; filterMinCF:0.0001; filterBeta: 0.001" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">    
       <a-assets>
-        <img id="card" src="./assets/1.png" />
-        <img id="card" src="./assets/2.png" />
-        <img id="card" src="./assets/3.png" />
-        <img id="card" src="./assets/4.png" />
-        <img id="card" src="./assets/5.png" />
-        <img id="card" src="./assets/6.png" />
-        <img id="card" src="./assets/7.png" />
+        <img id="card1" src="./assets/1.png" />
+        <img id="card2" src="./assets/2.png" />
+        <img id="card3" src="./assets/3.png" />
+        <img id="card4" src="./assets/4.png" />
+        <img id="card5" src="./assets/5.png" />
+        <img id="card6" src="./assets/6.png" />
+        <img id="card7" src="./assets/7.png" />
         <a-asset-item id="rock" src="./assets/Rock2.glb"></a-asset-item>
         <a-asset-item id="whip" src="./assets/Whip.glb"></a-asset-item>
         <a-asset-item id="crown" src="./assets/shook.glb"></a-asset-item>
@@ -64,9 +64,9 @@
           animation__move="property: position; to: 0 0 0; dur: 10000; easing: easeInOutQuad; loop: true; dir: alternate">
       </a-entity>
       <a-entity mindar-image-target="targetIndex: 2">
-        <a-gltf-model rotation="360 90 90 " position="0 0 -2" scale="10 10 10" src="#crown"
+        <a-gltf-model rotation="360 90 90 " position="0 0 2" scale="10 10 10" src="#crown"
           animation__rotate="property: rotation; to: 0 90 90; dur: 50000; easing: linear; loop: true"
-          animation__move="property: position; to: 0 0-2; dur: 10000; easing: easeInOutQuad; loop: true; dir: alternate">
+          animation__move="property: position; to: 0 0 -2; dur: 3000; easing: easeInOutQuad; loop: true; dir: alternate">
       </a-entity>
       <a-entity mindar-image-target="targetIndex: 3">
         <a-gltf-model rotation="360 90 90 " position="0 0 0" scale="10 10 10" src="#nails"
