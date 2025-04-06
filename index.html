@@ -52,6 +52,10 @@
           targetEl.addEventListener("targetLost", (e) => {
             soundEl.components.sound.stopSound();
           });
+          const model = targetEl.querySelector('a-gltf-model');
+          model.setAttribute("position", "0 0 0");
+          model.setAttribute("rotation", "360 90 90"); // أو اللي محتاجه
+          model.setAttribute("scale", "25 25 25");
         });
       </script>
       <a-entity mindar-image-target="targetIndex: 1">
