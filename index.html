@@ -50,7 +50,7 @@
     </style>
     <div id="password-container">
       <div id="password-box">
-        <h2>Please enter the password</h2>
+        <h2>Please enter your password</h2>
         <input type="password" id="password-input" placeholder="Enter password" />
         <button onclick="checkPassword()">Submit</button>
         <p id="error-msg" style="color: red; display: none;">Incorrect password</p>
@@ -58,11 +58,9 @@
     </div>
     <script>
       const correctPassword = "2846"; // ← غيّر الباسورد لو حبيت
-    
       function checkPassword() {
         const input = document.getElementById("password-input").value;
         const errorMsg = document.getElementById("error-msg");
-    
         if (input === correctPassword) {
           document.getElementById("password-container").style.display = "none";
           document.querySelector("a-scene").style.display = "block"; // ← هنا بنخلي المشهد يبان ويشتغل
