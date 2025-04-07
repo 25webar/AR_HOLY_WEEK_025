@@ -53,10 +53,20 @@
             soundEl.components.sound.stopSound();
           });
           const model = targetEl.querySelector('a-gltf-model');
-          model.setAttribute("position", "0 0 0");
-          model.setAttribute("rotation", "360 90 90"); // أو اللي محتاجه
-          model.setAttribute("scale", "25 25 25");
-        });
+
+    // 🔍 نكتشف إذا كان الجهاز سامسونج
+    const isSamsung = /Samsung/i.test(navigator.userAgent);
+
+    // 📌 نحدد الروتيشن حسب نوع الجهاز
+    if (isSamsung) {
+      model.setAttribute("rotation", "0 180 0"); // تعديل خاص بالسامسونج
+    } else {
+      model.setAttribute("rotation", "360 90 90"); // الطبيعي
+    }
+
+    model.setAttribute("position", "0 0 0");
+    model.setAttribute("scale", "25 25 25");
+  });
       </script>
       <a-entity mindar-image-target="targetIndex: 1">
         <a-gltf-model rotation="360 90 90 " position="0 0 0" scale="25 25 25" src="#whip"
