@@ -6,7 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
-    <a-scene mindar-image="imageTargetSrc: ./assets/targets.mind; maxTrack: 7; missTolerance: 0.01; warmupTolerance: 0.01; filterMinCF:0.0001; filterBeta: 0.001" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">    
+    <a-scene mindar-image="imageTargetSrc: ./assets/targets.mind; maxTrack: 7;filterMinCF:0.0001; filterBeta: 0.001" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">    
       <a-assets>
         <img id="card1" src="./assets/1.png" />
         <img id="card2" src="./assets/2.png" />
@@ -25,7 +25,7 @@
         <audio id="rocksound" src="./assets/Rock-Voice.ogg"></audio>
       </a-assets>
       <!-- إضافة كاميرا -->
-      <a-camera position="0 0 0" look-controls="enabled: true"></a-camera>
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
       <!-- إضافة إضاءة رئيسية -->
       <a-light type="directional" position="0 0 1" intensity="1" color="#ffffff"></a-light>
       <a-light type="directional" position="1 0 0" intensity="1" color="#ffffff"></a-light>
@@ -35,9 +35,7 @@
       <!-- إضافة ضوء في مكان آخر -->
     
       <a-entity id="target-rock" mindar-image-target="targetIndex: 0">
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="25 25 25" src="#rock"
-          animation__rotate="property: rotation; to: 0 0 0; dur: 15000; easing: linear; loop: true"
-          animation__move="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="25 25 25" src="#rock"></a-gltf-model>
       </a-entity>
       <!-- ر-->
       <a-sound id="rock-sound" src="#rocksound" autoplay="false" loop="true" volume="2"></a-sound>
@@ -58,13 +56,13 @@
 
     // 📌 نحدد الروتيشن حسب نوع الجهاز
     if (isSamsung) {
-      model.setAttribute("rotation", "0 180 0"); // تعديل خاص بالسامسونج
+      model.setAttribute("rotation", "180 0 0"); // تعديل خاص بالسامسونج
     } else {
       model.setAttribute("rotation", "0 0 0"); // الطبيعي
     }
 
-    model.setAttribute("position", "0 0 -2");
-    model.setAttribute("scale", "25 25 25");
+    model.setAttribute("position", "0 0 -1");
+    model.setAttribute("scale", "35 35 35");
   });
       </script>
       <a-entity mindar-image-target="targetIndex: 1">
